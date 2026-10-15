@@ -91,3 +91,11 @@ def cmd_today():
     for p in load():
         if is_due(p):
             print("water:", p["name"])
+
+
+def cmd_water(plant_id):
+    plants = load()
+    for p in plants:
+        if p["id"] == int(plant_id):
+            p["last_watered"] = today().isoformat()
+    save(plants)
