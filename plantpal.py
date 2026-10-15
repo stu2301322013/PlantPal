@@ -99,3 +99,6 @@ def cmd_water(plant_id):
         if p["id"] == int(plant_id):
             p["last_watered"] = today().isoformat()
     save(plants)
+
+
+REMINDER_TEXT = "Time to water {name}!"
