@@ -102,3 +102,9 @@ def cmd_water(plant_id):
 
 
 REMINDER_TEXT = "Time to water {name}!"
+
+
+def cmd_remind():
+    for p in load():
+        if is_due(p) and p.get("remind", True):
+            print(REMINDER_TEXT.format(name=p["name"]))
