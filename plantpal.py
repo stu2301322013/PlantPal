@@ -69,3 +69,25 @@ def cmd_schedule(plant_id, every_days):
         if p["id"] == int(plant_id):
             p["every_days"] = int(every_days)
     save(plants)
+
+
+from datetime import date, datetime, timedelta, timezone
+
+
+def today():
+    return datetime.now(timezone.utc).date()
+
+
+def is_due(p):
+    if not p["every_days"]:
+        return False
+    if not p["last_watered"]:
+        return True
+    last = date.fromisoformat(p["last_watered"])
+    return today() >= last + timedelta(days=p["every_days"])
+
+
+def cmd_today():
+    for p in load():
+        if is_due(p):
+            print("water:", p["name"])
