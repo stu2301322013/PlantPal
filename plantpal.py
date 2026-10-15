@@ -61,3 +61,11 @@ def cmd_photo(plant_id, path):
         if p["id"] == int(plant_id):
             p["photo"] = path
     save(plants)
+
+
+def cmd_schedule(plant_id, every_days):
+    plants = load()
+    for p in plants:
+        if p["id"] == int(plant_id):
+            p["every_days"] = int(every_days)
+    save(plants)
