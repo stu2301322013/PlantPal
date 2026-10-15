@@ -35,3 +35,15 @@ def cmd_add(name, species=""):
 def cmd_list():
     for p in load():
         print(p["id"], p["name"], p["species"])
+
+
+def cmd_edit(plant_id, name):
+    plants = load()
+    for p in plants:
+        if p["id"] == int(plant_id):
+            p["name"] = name
+    save(plants)
+
+
+def cmd_delete(plant_id):
+    save([p for p in load() if p["id"] != int(plant_id)])
