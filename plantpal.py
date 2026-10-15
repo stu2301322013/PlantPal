@@ -73,7 +73,7 @@ from datetime import date, datetime, timedelta, timezone
 
 
 def today():
-    return datetime.now(timezone.utc).date()
+    return date.today()
 
 
 def is_due(p):
