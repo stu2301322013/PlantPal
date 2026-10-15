@@ -30,3 +30,8 @@ def cmd_add(name, species=""):
     plants.append(plant)
     save(plants)
     print("added", plant["name"])
+
+
+def cmd_list():
+    for p in load():
+        print(p["id"], p["name"], p["species"])
