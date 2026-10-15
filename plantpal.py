@@ -19,3 +19,14 @@ def save(plants):
 def new_plant(name, species=""):
     return {"id": 0, "name": name, "species": species, "photo": None,
             "every_days": None, "last_watered": None}
+
+
+def cmd_add(name, species=""):
+    plants = load()
+    plant = new_plant(name, species)
+    plant["id"] = max([p["id"] for p in plants], default=0) + 1
+    plants.append(plant)
+    save(plants)
+    plants.append(plant)
+    save(plants)
+    print("added", plant["name"])
