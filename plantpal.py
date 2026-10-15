@@ -47,3 +47,9 @@ def cmd_edit(plant_id, name):
 
 def cmd_delete(plant_id):
     save([p for p in load() if p["id"] != int(plant_id)])
+
+
+def cmd_search(text):
+    for p in load():
+        if text.lower() in p["name"].lower():
+            print(p["id"], p["name"])
