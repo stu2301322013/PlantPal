@@ -27,8 +27,6 @@ def cmd_add(name, species=""):
     plant["id"] = max([p["id"] for p in plants], default=0) + 1
     plants.append(plant)
     save(plants)
-    plants.append(plant)
-    save(plants)
     print("added", plant["name"])
 
 
