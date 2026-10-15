@@ -53,3 +53,11 @@ def cmd_search(text):
     for p in load():
         if text.lower() in p["name"].lower():
             print(p["id"], p["name"])
+
+
+def cmd_photo(plant_id, path):
+    plants = load()
+    for p in plants:
+        if p["id"] == int(plant_id):
+            p["photo"] = path
+    save(plants)
