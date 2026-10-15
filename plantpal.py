@@ -99,3 +99,20 @@ def cmd_water(plant_id):
         if p["id"] == int(plant_id):
             p["last_watered"] = today().isoformat()
     save(plants)
+
+
+REMINDER_TEXT = "Time to water {name}!"
+
+
+def cmd_remind():
+    for p in load():
+        if is_due(p) and p.get("remind", True):
+            print(REMINDER_TEXT.format(name=p["name"]))
+
+
+def cmd_optout(plant_id):
+    plants = load()
+    for p in plants:
+        if p["id"] == int(plant_id):
+            p["remind"] = False
+    save(plants)
